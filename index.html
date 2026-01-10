@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>OPCOM Browser Scraper</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<h1>OPCOM PIP Data Export</h1>
+
+<div class="controls">
+  <label>
+    Start date:
+    <input type="date" id="startDate">
+  </label>
+
+  <label>
+    End date:
+    <input type="date" id="endDate">
+  </label>
+
+  <button id="readBtn">Read data</button>
+</div>
+
+<progress id="progressBar" value="0" max="100"></progress>
+<div id="status"></div>
+
+<hr>
+
+<div class="exports">
+  <label><input type="checkbox" id="exportAll" checked> Export all data</label>
+  <label><input type="checkbox" id="exportPrice" checked> Export price data</label>
+  <label><input type="checkbox" id="exportVolume" checked> Export volume data</label>
+  <label><input type="checkbox" id="exportBuy" checked> Export buy volume</label>
+  <label><input type="checkbox" id="exportSell" checked> Export sell volume</label>
+
+  <button id="exportBtn">Export CSV</button>
+</div>
+
+<!-- Hidden iframe used for same-origin scraping -->
+<iframe id="scrapeFrame" style="display:none;"></iframe>
+
+<script src="app.js"></script>
+</body>
+</html>
