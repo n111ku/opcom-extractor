@@ -2,14 +2,35 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>OPCOM Fetch Test</title>
+  <title>OPCOM Script Generator</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h2>OPCOM Direct Fetch Test</h2>
+<h1>OPCOM Console Script Generator</h1>
 
-<button id="test">Test Fetch</button>
-<pre id="output"></pre>
+<label>
+  Start date:
+  <input type="date" id="start">
+</label>
+
+<label>
+  End date:
+  <input type="date" id="end">
+</label>
+
+<h3>Export options</h3>
+
+<label><input type="checkbox" id="all" checked> Export all data</label><br>
+<label><input type="checkbox" id="price" checked> Export price</label><br>
+<label><input type="checkbox" id="volume" checked> Export volume</label><br>
+<label><input type="checkbox" id="buy" checked> Export buy volume</label><br>
+<label><input type="checkbox" id="sell" checked> Export sell volume</label><br>
+
+<br>
+<button id="generate">Generate Script</button>
+
+<textarea id="output" readonly></textarea>
 
 <script src="app.js"></script>
 </body>
