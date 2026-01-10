@@ -27,7 +27,7 @@ document.getElementById("generate").onclick = async () => {
 
 function buildConsoleScript(start, end, opt) {
   return `(async () => {
-const URL = location.href;
+const PAGE_URL = location.href;
 const token = document.querySelector('input[name="_token"]')?.value;
 
 if (!token) {
@@ -55,7 +55,7 @@ async function fetchDay(date) {
   form.append("year", date.getFullYear());
   form.append("buton", "Refresh");
 
-  const res = await fetch(URL, {
+  const res = await fetch(PAGE_URL, {
     method: "POST",
     body: form,
     credentials: "include"
@@ -90,10 +90,13 @@ for (let i = 0; i < dates.length; i++) {
 
 function download(name, content) {
   const a = document.createElement("a");
-  a.href = URL.createObjectURL(new Blob([content]));
+  a.href = URL.createObjectURL(
+    new Blob([content], { type: "text/csv" })
+  );
   a.download = name;
   a.click();
 }
+
 
 function transpose(col) {
   const m = {};
