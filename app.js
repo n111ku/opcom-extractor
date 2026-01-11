@@ -1,3 +1,11 @@
+document.getElementById("howToBtn").onclick = () => {
+  document.getElementById("howToModal").classList.remove("hidden");
+};
+
+document.getElementById("closeHowTo").onclick = () => {
+  document.getElementById("howToModal").classList.add("hidden");
+};
+
 document.getElementById("generate").onclick = async () => {
   const start = document.getElementById("start").value;
   const end = document.getElementById("end").value;
@@ -125,11 +133,4 @@ console.log("Done.");
 })();`;
 }
 
-document.getElementById("howToBtn").onclick = () => {
-  document.getElementById("howToModal").classList.remove("hidden");
-};
-
-document.getElementById("closeHowTo").onclick = () => {
-  document.getElementById("howToModal").classList.add("hidden");
-};
 
