@@ -124,3 +124,12 @@ ${opt.sell ? `download("opcom_sell.csv", transpose(6));` : ""}
 console.log("Done.");
 })();`;
 }
+
+document.getElementById("howToBtn").onclick = () => {
+  document.getElementById("howToModal").classList.remove("hidden");
+};
+
+document.getElementById("closeHowTo").onclick = () => {
+  document.getElementById("howToModal").classList.add("hidden");
+};
+
