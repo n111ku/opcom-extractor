@@ -86,6 +86,7 @@ for (let i = 0; i < dates.length; i++) {
   console.log(\`Fetching \${dates[i].toDateString()} (\${i+1}/\${dates.length})\`);
   const rows = await fetchDay(dates[i]);
   allRows.push(...rows);
+  await new Promise(r => setTimeout(r, 400));
 }
 
 function download(name, content) {
