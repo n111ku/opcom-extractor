@@ -12,3 +12,39 @@ textarea {
   font-family: monospace;
   font-size: 12px;
 }
+.secondary {
+  margin-left: 10px;
+  background: #eee;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 20px;
+  max-width: 600px;
+  width: 90%;
+  border-radius: 6px;
+}
+
+.modal-content ol {
+  padding-left: 20px;
+}
+
+.modal-content .note {
+  margin-top: 15px;
+  font-size: 14px;
+  color: #a00;
+}
