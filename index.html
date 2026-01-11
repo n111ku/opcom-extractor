@@ -33,5 +33,51 @@
 <textarea id="output" readonly></textarea>
 
 <script src="app.js"></script>
+
+  <div id="howToModal" class="modal hidden">
+  <div class="modal-content">
+    <h2>How to use the OPCOM Script Generator</h2>
+
+    <ol>
+      <li>
+        Select <strong>Start date</strong> and <strong>End date</strong>.
+      </li>
+      <li>
+        Choose which CSV files you want to export.
+      </li>
+      <li>
+        Click <strong>Generate Script</strong>.
+        The script is automatically copied to your clipboard.
+      </li>
+      <li>
+        Open
+        <a href="https://www.opcom.ro/grafice-ip-raportPIP-si-volumTranzactionat/ro"
+           target="_blank" rel="noopener">
+          the OPCOM page
+        </a>.
+      </li>
+      <li>
+        Press <strong>F12</strong> to open Developer Tools.
+      </li>
+      <li>
+        Go to the <strong>Console</strong> tab.
+      </li>
+      <li>
+        Paste the script and press <strong>Enter</strong>.
+      </li>
+      <li>
+        Wait until the script finishes.
+        CSV files will download automatically.
+      </li>
+    </ol>
+
+    <p class="note">
+      ⚠️ Do not open multiple tabs or run the script repeatedly in a short time.
+    </p>
+
+    <button id="closeHowTo">Close</button>
+  </div>
+</div>
+
 </body>
 </html>
