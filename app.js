@@ -87,6 +87,7 @@ async function fetchDay(date) {
 
 const start = new Date("${start}");
 const end = new Date("${end}");
+end.setHours(23, 59, 59, 999);
 let allRows = [];
 const dates = [...dateRange(start, end)];
 
