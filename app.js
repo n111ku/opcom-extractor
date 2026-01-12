@@ -91,7 +91,7 @@ end.setHours(23, 59, 59, 999);
 let allRows = [];
 const dates = [...dateRange(start, end)];
 
-for (let i = 0; i <= dates.length; i++) {
+for (let i = 0; i < dates.length; i++) {
   console.log(\`Fetching \${dates[i].toDateString()} (\${i+1}/\${dates.length})\`);
   const rows = await fetchDay(dates[i]);
   allRows.push(...rows);
