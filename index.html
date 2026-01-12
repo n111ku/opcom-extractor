@@ -1,92 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>OPCOM Script Generator</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-<div style="display:flex; flex-direction:row;gap:1rem;align-items:center;">
-<h1>OPCOM Console Script Generator</h1>
-  
-<button id="howToBtn" class="help-btn" aria-label="How to use this tool">
-  ?
-</button>
-  
-</div>
+  <header class="header">
+    <h1 class="title">OPCOM Console Script Generator</h1>
 
-<label>
-  Start date:
-  <input type="date" id="start">
-</label>
+    <button id="howToBtn" class="help-btn" aria-label="How to use this tool" title="How to use">
+      ?
+    </button>
+  </header>
 
-<label>
-  End date:
-  <input type="date" id="end">
-</label>
+  <section class="card">
+    <div class="row">
+      <label class="field">
+        <span>Start date</span>
+        <input type="date" id="start" />
+      </label>
 
-<h3>Export options</h3>
+      <label class="field">
+        <span>End date</span>
+        <input type="date" id="end" />
+      </label>
+    </div>
 
-<label><input type="checkbox" id="all" checked> Export all data</label><br>
-<label><input type="checkbox" id="price" checked> Export price</label><br>
-<label><input type="checkbox" id="volume" checked> Export volume</label><br>
-<label><input type="checkbox" id="buy" checked> Export buy volume</label><br>
-<label><input type="checkbox" id="sell" checked> Export sell volume</label><br>
-<label>
-  <input type="checkbox" id="normalizeData" checked />
-  Normalize 15-minute data to hourly (mean)
-</label>
-<br>
-<button id="generate">Generate Script</button>
+    <div class="row">
+      <label class="check">
+        <input type="checkbox" id="normalizeData" checked />
+        Normalize 15-minute data (96 intervals) to hourly (mean of 4)
+      </label>
+    </div>
 
-<textarea id="output" readonly></textarea>
+    <div class="grid">
+      <label class="check"><input type="checkbox" id="all" checked /> Export all data (original layout)</label>
+      <label class="check"><input type="checkbox" id="price" checked /> Export price (transposed)</label>
+      <label class="check"><input type="checkbox" id="volume" checked /> Export volume (transposed)</label>
+      <label class="check"><input type="checkbox" id="buy" checked /> Export buy volume (transposed)</label>
+      <label class="check"><input type="checkbox" id="sell" checked /> Export sell volume (transposed)</label>
+    </div>
 
+    <div class="actions">
+      <button id="generate" class="primary">Generate & Copy Script</button>
+    </div>
 
+    <label class="field">
+      <span>Generated script (auto-copied)</span>
+      <textarea id="output" readonly spellcheck="false"></textarea>
+    </label>
+  </section>
 
-  <div id="howToModal" class="modal hidden">
-  <div class="modal-content">
-    <h2>How to use the OPCOM Script Generator</h2>
+  <!-- How-to modal -->
+  <div id="howToModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="howToTitle">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="howToTitle">How to use</h2>
+        <button id="closeHowTo" class="icon-btn" aria-label="Close">✕</button>
+      </div>
 
-    <ol>
-      <li>
-        Select <strong>Start date</strong> and <strong>End date</strong>.
-      </li>
-      <li>
-        Choose which CSV files you want to export.
-      </li>
-      <li>
-        Click <strong>Generate Script</strong>.
-        The script is automatically copied to your clipboard.
-      </li>
-      <li>
-        Open
-        <a href="https://www.opcom.ro/grafice-ip-raportPIP-si-volumTranzactionat/ro"
-           target="_blank" rel="noopener">
-          the OPCOM page
-        </a>.
-      </li>
-      <li>
-        Press <strong>F12</strong> to open Developer Tools.
-      </li>
-      <li>
-        Go to the <strong>Console</strong> tab.
-      </li>
-      <li>
-        Paste the script and press <strong>Enter</strong>.
-      </li>
-      <li>
-        Wait until the script finishes.
-        CSV files will download automatically.
-      </li>
-    </ol>
+      <ol class="howto">
+        <li>Select <b>Start</b> and <b>End</b> date.</li>
+        <li>(Optional) Keep <b>Normalize</b> enabled to convert 96×15min → 24×hour.</li>
+        <li>Select export files you want.</li>
+        <li>Click <b>Generate & Copy Script</b>.</li>
+        <li>Open the OPCOM page in a new tab:
+          <div class="mono">https://www.opcom.ro/grafice-ip-raportPIP-si-volumTranzactionat/ro</div>
+        </li>
+        <li>Open DevTools (F12) → <b>Console</b>.</li>
+        <li>Paste the script and press Enter.</li>
+        <li>Wait. CSVs will download automatically.</li>
+      </ol>
 
-    <p class="note">
-      ⚠️ Do not open multiple tabs or run the script repeatedly in a short time.
-    </p>
-
-    <button id="closeHowTo">Close</button>
+      <p class="note">
+        Tip: Don’t run multiple times in parallel. The script already throttles requests (400ms).
+      </p>
+    </div>
   </div>
-</div>
-<script src="app.js"></script>
+
+  <script src="app.js"></script>
 </body>
 </html>
